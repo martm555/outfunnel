@@ -1,5 +1,5 @@
-import {getForecastRoute} from './getForecast';
+import {getDifferentContactsRoute} from './getDifferentContactsRoute';
 
 export default [
-  getForecastRoute,
+  getDifferentContactsRoute,
 ];

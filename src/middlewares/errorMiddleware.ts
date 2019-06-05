@@ -9,12 +9,14 @@ export default (err, req, res, next) => {
   if (err.params) {
     data.params = err.params;
   }
-  if (err.log || !(err instanceof ApplicationError)) {
+  const isUnknownError = !(err instanceof ApplicationError);
+  if (err.log || isUnknownError) {
     // log error to sentry or somewhere
     console.log('Error occured: ', data);
   }
   return res.status(err.status || 500).json({
-    message: err.message,
+    // another option is to check some environment variable => if production then dont return message
+    message: isUnknownError ? 'Unexpected system error!' : err.message,
     type: err.name,
   });
 };
