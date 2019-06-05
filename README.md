@@ -10,6 +10,8 @@ Copy env file
 
 `cp .env-example .env`
 
+Fill environment file with your own data
+
 Install packages
 
 `yarn install`
